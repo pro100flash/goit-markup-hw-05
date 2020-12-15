@@ -546,6 +546,25 @@ img {
 .icon {
     fill: currentColor;
 }
+.current {
+    position: relative;
+    padding-bottom: 32px;
+    color: var(--accent-button-color);
+}
+.current::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--accent-button-color);
+}
+
+
+
+
 
 
 /*Кнопки*/
@@ -573,22 +592,24 @@ img {
     border-radius: 4px;
 }
 .button-secondary {
-    background-color: var(--accent-button-color);
-    color: var(--full-white);
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    letter-spacing: 0.06em;
     width: 200px;
     height: 50px;
     left: 700px;
     top: 430px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 30px;
+    background-color: var(--accent-button-color);
+    color: var(--full-white);
+    letter-spacing: 0.06em;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
+    border: none;
+    cursor: pointer;
 }
 .button-primary:hover,
 .button-primary:focus {
@@ -601,6 +622,12 @@ img {
 .buttons-ul li:not(:last-child){
     margin-right: 8px;
 }
+
+
+
+
+
+
 
 /*ССЫЛКИ*/
 a[href="mailto:info@devstudio.com"],
@@ -620,23 +647,47 @@ a[href="tel:+380961111111"] {
     padding: 0px;
     margin: 0px;
 }
-.current {
-    position: relative;
-    padding-bottom: 32px;
-    color: var(--accent-button-color);
-}
-.current::after {
-    content: "";
-    position: absolute;
+
+
+
+/* MODAL */
+.backdrop {
+    position: fixed;
+    top: 0;
     left: 0;
-    bottom: 0;
     width: 100%;
-    height: 4px;
-    border-radius: 2px;
-    transform: scaleX(0);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    background-color: var(--accent-button-color);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
 }
-.current:hover::after {
-    transform: scaleX(1);
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
 }
+.modal {
+    position: absolute;
+    width: 528px;
+    height: 581px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--full-white);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+.close-btn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 8px;
+    top: 8px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    background: #FFFFFF;
+}
+/* .transition {
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+} */
